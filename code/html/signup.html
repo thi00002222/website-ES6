@@ -1,0 +1,151 @@
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/code/js/db.js"></script>
+<script src="../js/user.js"></script>
+<script src="../js/xluser.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.1.3/united/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <style>
+    </style>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <a class="navbar-brand" href="#">Logo</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div
+            class="collapse navbar-collapse align-items-center"
+            id="navbarSupportedContent"
+          >
+            <ul class="navbar-nav mr-auto w-50 text-uppercase">
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">trang chủ</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="login.html">Đăng nhập</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">giỏ hàng</a>
+                </li>
+            </ul>
+            <form
+              class="form-inline my-2 my-lg-0 w-100 align-items-center d-flex gap-1"
+            >
+              <input
+                class="form-control mr-sm-2 w-75 d-inline-block"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button
+                class="btn btn-outline-success bg-success my-2 my-sm-0 d-inline-block text-white"
+                type="submit"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- End Header Section -->
+    <div class="d-flex justify-content-md-center align-items-center">
+      <div class="w-50 shadow-lg p-3 bg-white rounded">
+        <h1 class="text-uppercase text-center p-1 bg-primary mt-5 text-white">
+          đăng ký tài khoản
+        </h1>
+        <div class="form-floating mb-3">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+          />
+          <label for="floatingInput">Nhập tên tài khoản</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+          />
+          <label for="floatingPassword ml-2">Nhập password</label>
+        </div>
+        <div class="form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPasswordAgain"
+            placeholder="Password"
+          />
+          <label for="floatingPasswordAgain ml-2">Nhập lại password</label>
+        </div>
+        <div class="mt-4">
+          <button
+            onclick="check()"
+            class="btn btn-primary float-end text-uppercase"
+          >
+            đăng đăng ký
+          </button>
+          <span>bạn đã có tài khoản? </span
+          ><a
+            href="login.html"
+            class="text-decoration-none link-dark text-uppercase"
+            style="height: 36px; line-height: 36px"
+            >đăng nhập</a
+          >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+ async function check() {
+    const db = new database();
+    const users = await db.doc(userApi);
+    var user = document.getElementById("floatingInput").value;
+    var pass = document.getElementById("floatingPassword").value;
+    var agian = document.getElementById("floatingPasswordAgain").value;
+    
+    if (user == "" || user == null) {
+        document.getElementById("floatingInput").classList.add("border" ,"border-primary");
+        alert("Tên người dùng không được để trống");
+    }
+    
+    else if(pass.length<=6){
+        document.getElementById("floatingPassword").classList.add("border" ,"border-primary");
+        alert('Mật khẩu phải chứa ít nhất 6 ký tự');
+    } else if (pass !== agian) {
+        document.getElementById("floatingPasswordAgain").classList.add("border" ,"border-primary");
+      alert("Mật khẩu nhập lại không trùng khớp");
+    } else {
+        alert('đăng ký thành công');    
+        addUser();
+        window.location='login.html';
+        
+      
+    }
+}
+</script>
+

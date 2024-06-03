@@ -1,0 +1,129 @@
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="/code/js/db.js"></script>
+<script src="../js/user.js"></script>
+<script src="../js/xluser.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quản Lý Người Dùng</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.1.3/united/bootstrap.min.css"
+    />
+  </head>
+  <body onload="showUser()">
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <a class="navbar-brand" href="admin.html">Logo</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="admin.html">sản phẩm</a>
+              </li>
+
+              <li class="nav-item active">
+                <a class="nav-link" href="cate.html">danh mục</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="user.html">người dùng</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="index.html">đăng xuất</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <h1>Quản lý người dùng</h1>
+    <div class="container">
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+        />
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+        />
+        <label for="floatingPassword ml-2">Password</label>
+      </div>
+      <button
+        onclick="addUser()"
+        class="btn btn-primary float-end mt-3 text-uppercase"
+      >
+        thêm
+      </button>
+    </div>
+    <div class="user container" style="clear: both">
+      <script>
+        var userList = document.querySelector(".user");
+        var content = document.createElement("h3");
+        content.textContent = "danh sách người dùng";
+        content.className = "text-uppercase";
+        // dom table
+        var table = document.createElement("table");
+        table.className = "table table-striped";
+        // header
+        var thead = document.createElement("thead");
+        var trHeading = document.createElement("tr");
+        var th_id = document.createElement("th");
+        th_id.setAttribute("scope", "col");
+        th_id.textContent = "ID";
+        var th_user = document.createElement("th");
+        th_user.setAttribute("scope", "col");
+        th_user.textContent = "tài khoản";
+        var th_isadmin = document.createElement("th");
+        th_isadmin.setAttribute("scope", "col");
+        th_isadmin.textContent = "quyền quản trị";
+        var th_status = document.createElement("th");
+        th_status.setAttribute("scope", "col");
+        th_status.textContent = "trạng thái";
+        // end
+
+        // body
+        // var tbd = document.createElement("tbody");
+        var tbody = document.createElement("tbody");
+        // var tr = document.createElement(tr);
+        var td = document.createElement(td);
+
+        userList.appendChild(content);
+        userList.appendChild(table);
+        table.appendChild(thead);
+        thead.appendChild(trHeading);
+        trHeading.appendChild(th_id);
+        trHeading.appendChild(th_user);
+        trHeading.appendChild(th_isadmin);
+        trHeading.appendChild(th_status);
+        table.appendChild(tbody);
+
+        // tbody.appendChild(tr);
+        
+        // tr.textContent=text;
+      </script>
+      <!-- <h3 class="text-uppercase">danh sách người dùng</h3> -->
+    </div>
+  </body>
+</html>
+

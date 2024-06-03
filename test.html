@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+
+<script>
+  const dv = document.createElement("dv");
+    dv.classList.add("container");
+
+    const listDiv = document.createElement("div");
+    listDiv.id = "list";
+    listDiv.classList.add("d-inline-block", "me-3");
+
+    const div = document.createElement("div");
+    div.classList.add("d-grid", "gap-2", "d-md-flex", "justify-content-md-end");
+
+    const h1 = document.createElement("h1");
+    h1.textContent = "ten";
+
+    const p1 = document.createElement("p");
+    p1.textContent = "gia";
+
+    const p2 = document.createElement("p");
+    p2.textContent = "description";
+
+    const img = document.createElement("img");
+    img.height = 300;
+    img.classList.add('w-100')
+    img.src = "image";
+
+    const br = document.createElement("br");
+
+    const input = document.createElement("input");
+    input.type = "number";
+    input.classList.add('txt');
+
+
+    const chiTietButton = document.createElement("button");
+    chiTietButton.textContent = "xem chi tiết";
+    chiTietButton.classList.add("btn", "btn-primary", "me-md-2")
+    chiTietButton.addEventListener("click", () => xemChiTiet(cource.id));
+
+    const muaButton = document.createElement("button");
+    muaButton.textContent = "mua ngay";
+    muaButton.classList.add("btn", "btn-primary")
+    muaButton.addEventListener("click", () => check(cource.id));
+
+
+    // const xoaButton = document.createElement("button");
+    // xoaButton.textContent = "";
+    // xoaButton.classList.add()
+    // xoaButton.addEventListener("click", () => xoa(cource.id));
+
+    // const editButton = document.createElement("button");
+    // editButton.textContent = "edit";
+
+    // editButton.addEventListener("click", () => chon(cource.id));
+
+    // Append all elements to the listDiv
+
+    listDiv.appendChild(h1);
+    listDiv.appendChild(p1);
+    listDiv.appendChild(p2);
+    listDiv.appendChild(img);
+    listDiv.appendChild(br);
+    listDiv.appendChild(input);
+    listDiv.appendChild(div);
+    div.appendChild(chiTietButton);
+    div.appendChild(muaButton);
+
+    // Append the listDiv to the desired location in the DOM
+
+    dv.appendChild(listDiv);
+    document.body.appendChild(dv);
+
+
+
+</script>
